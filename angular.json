@@ -18,8 +18,8 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/droneia-front",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "index": "src/presentation/index.html",
+            "browser": "src/infrastructure/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -30,10 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/presentation/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
+            "server": "src/infrastructure/main.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
