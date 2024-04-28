@@ -9,14 +9,25 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/home/profile">Profile</button>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
   </mat-toolbar>
 </p>
 
 <mat-drawer-container class="page-container" autosize>
-  <router-outlet></router-outlet>
+  <div class="router">
+    <router-outlet></router-outlet>
+  </div>
   <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-nav-list>
+      <h2 matListItemTitle>{{ profileName }}</h2>
+      <hr>
+      <a mat-list-item routerLink="/home/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/home/drones">Drones</a>
+      <a mat-list-item routerLink="/home/products">Products</a>
+      <a mat-list-item routerLink="/home/orders">Orders</a>
+    </mat-nav-list>
   </mat-drawer>
 </mat-drawer-container>
 
