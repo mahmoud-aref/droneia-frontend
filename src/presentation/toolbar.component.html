@@ -1,6 +1,6 @@
 <p>
   <mat-toolbar>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Droneia</span>
@@ -13,3 +13,10 @@
     </mat-menu>
   </mat-toolbar>
 </p>
+
+<mat-drawer-container class="page-container" autosize>
+  <router-outlet></router-outlet>
+  <mat-drawer #drawer class="sidenav" mode="side">
+  </mat-drawer>
+</mat-drawer-container>
+

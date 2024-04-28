@@ -4,7 +4,8 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {TokenService} from "@infrastructure/auth/token.service";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +17,10 @@ import {Router} from "@angular/router";
     MatMenu,
     MatMenuTrigger,
     MatButton,
-    MatMenuItem
+    MatMenuItem,
+    MatDrawerContainer,
+    MatDrawer,
+    RouterOutlet
   ],
   templateUrl: '../../presentation/toolbar.component.html',
   styleUrl: '../../presentation/toolbar.component.scss'

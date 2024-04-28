@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {LoginComponent} from '@application/login/login.component';
 import {ToolbarComponent} from '@application/toolbar/toolbar.component';
 
@@ -11,6 +11,9 @@ import {ToolbarComponent} from '@application/toolbar/toolbar.component';
   imports: [RouterOutlet, LoginComponent, ToolbarComponent]
 })
 export class AppComponent {
+
+  constructor() {
+  }
 
 
 }

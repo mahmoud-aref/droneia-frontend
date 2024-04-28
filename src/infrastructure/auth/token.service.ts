@@ -1,26 +1,38 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {TokenResponse} from "@infrastructure/auth/token.response";
+import {BASE} from "@infrastructure/base.model";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  tokenKey = "TOKEN";
+  TOKEN_KEY = "TOKEN";
+
+  constructor(
+    private httpClient: HttpClient,
+    private cookieService: CookieService
+  ) {
+  }
 
   saveToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+    this.cookieService.set(this.TOKEN_KEY, token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    return this.cookieService.get(this.TOKEN_KEY);
   }
 
   clearToken(): void {
-    localStorage.removeItem(this.tokenKey);
+    this.cookieService.delete(this.TOKEN_KEY);
   }
 
-  isTokenValid(): boolean {
-    return !!this.getToken(); // for now, we just check if the token exists
+  isTokenValid(): Observable<TokenResponse> | null {
+    if (this.getToken()) {
+      return this.httpClient.get<TokenResponse>(`${BASE.URL + BASE.VALIDATE}`);
+    } else return null;
   }
 }
