@@ -1,0 +1,27 @@
+<div class="login-form">
+  <mat-card class="card">
+    <mat-card-title class="card-title">PLACEHOLDER</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input type="text" [errorStateMatcher]="errorMatcher" matInput placeholder="Username"
+                 formControlName="username">
+          @if (userLoginFormControl['username'].hasError('required')) {
+            <mat-error>Enter Username Please</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" [errorStateMatcher]="errorMatcher" matInput placeholder="Password"
+                 formControlName="password">
+          @if (userLoginFormControl['password'].hasError('required')) {
+            <mat-error>Enter Password Please</mat-error>
+          }
+        </mat-form-field>
+        <button type="submit" class="btn" mat-raised-button [disabled]="isLoading">Login</button>
+        @if (isLoading) {
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
